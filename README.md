@@ -35,6 +35,6 @@ I got into Parallel.ForEach to try to speed it up but it started to chew up all 
 I have a powerful gaming PC and my PC cannot handle more 400 to 500 particles before it starts to really degrade in performance. At 1000 perticles I see about 7 to 9 frames per second. Not good! So maybe getting into quad trees or something else more efficient is the best answer rather than trying to throw computer cores at it.
 
 ## Try It Yourself
-Open up the template project (or copy it) and look for the empty todo in WPF.ParticleLife.Template.UniverseRenderer.UpdateParticlePositions(double) and take a crack and coming up with a efficient particle position update algorithm. Take some time and familiarize yourself with the code. It is mostly MVVM driven. Feel free to take a look at WPF.ParticleLife.Updated.UniverseRenderer.UpdateParticlePositions to see my attempts at this.
+Open up the template project (or copy it) and look for the empty todo in WPF.ParticleLife.Template.UniverseRenderer.UpdateParticlePositions(double) and take a crack and coming up with an efficient particle position update algorithm. Take some time and familiarize yourself with the code. It is mostly MVVM driven. Feel free to take a look at WPF.ParticleLife.Updated.UniverseRenderer.UpdateParticlePositions to see my attempts at this.
 
 Change the project as you see fit to get a more performant version. I would love to see forks of the project that come up with something more performant than what I am making. 
