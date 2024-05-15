@@ -23,6 +23,7 @@ This project uses the Graphics Bitmap combo, however the code has been more orga
 ### WPF.ParticleLife.Updated
 This project uses the template project and is an attempt at coming up with a better UpdateParticlePositions algorithm.
 
+## Notes
 The Template and Updated variants have a List<Particle> to so you can do nested for loops but this makes it an N^2 problem. The previous iterations had 4 nested loops so it could only be so performant. These two project brought it down to 2 nested for/foreach loops. 
 
 The thing that will speed this up but have not implemented myself is to use quad trees or the Barnes-Hut algorithm. Google one or both of those to speed this up. Also the other thing to consider doing is using the Vector2 type. This apparently is a SIMD-accelerated type in .NET (provides hardware support for performing an operation on multiple pieces of data in parallel using a single instruction)...again Google it. In my experience in playing with this type (you will have to change particle to have 2 Vector2s instead of 4 double properties) is that it made it slower not faster.
