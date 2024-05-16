@@ -52,6 +52,9 @@ namespace WPF.ParticleLife.Updated.Rendering
 
         public void DrawParticle(float x, float y, float diameter, SolidBrush color, Pen border) 
         {
+            //x -= (float)Universe.Radius;
+            //y -= (float)Universe.Radius;
+
             if (x < 0) x = 0;
             if (x + diameter > Universe.Width) x = (float)Universe.Width - diameter;
 
@@ -119,8 +122,9 @@ namespace WPF.ParticleLife.Updated.Rendering
 
             // how can we make the synchronous version more efficient?
             // how can we make the particles at the edges not flash back and forth between the top/bottom or left/right borders if wrapping is turned on?
+            //     - (the base Graphics version does not do this so much or at all...but this code is 99% the same and if it is made 100% the same is still has the flicker and does not act like the Graphics version)
             // how come if we turn off wrapping doesn't the velocity *= -1 seem to move the particles in the other direction?
-            //      we don't want them sitting on the edges, we want to move them away from the edges
+            //     - we don't want them sitting on the edges, we want to move them away from the edges
 
             foreach (Particle sourceParticle in Particles)
             {
