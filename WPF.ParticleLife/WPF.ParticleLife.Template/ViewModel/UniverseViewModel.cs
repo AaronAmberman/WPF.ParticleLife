@@ -96,8 +96,14 @@ namespace WPF.ParticleLife.Template.ViewModel
             borderCommand ?? (borderCommand = new RelayCommand(BorderDialog));
 
         public double Diameter 
-        { 
-            get => diameter;
+        {
+            get
+            {
+                if (diameter == 0)
+                    diameter = Model.Radius * 2;
+
+                return diameter;
+            }
             set
             {
                 diameter = value;

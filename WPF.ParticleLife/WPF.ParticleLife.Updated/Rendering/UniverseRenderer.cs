@@ -171,12 +171,12 @@ namespace WPF.ParticleLife.Updated.Rendering
 
                     if (Universe.Wrap)
                     {
-                        if (sourceParticle.X < 0.0)
+                        if (sourceParticle.X <= 0.0)
                             sourceParticle.X += Universe.Width;
                         else if (sourceParticle.X >= Universe.Width)
                             sourceParticle.X -= Universe.Width;
 
-                        if (sourceParticle.Y < 0.0)
+                        if (sourceParticle.Y <= 0.0)
                             sourceParticle.Y += Universe.Height;
                         else if (sourceParticle.Y >= Universe.Height)
                             sourceParticle.Y -= Universe.Height;

@@ -16,7 +16,7 @@ namespace WPF.ParticleLife.Template.Model
 
         public double Height { get; set; }
 
-        public double MaxVelocity { get; set; } = 100.0;
+        public double MaxVelocity { get; set; } = 50.0;
 
         public double ParticleRange { get; set; } = 250.0;
 
