@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.ParticleLife.Ellipses", "WPF.ParticleLife.Ellipses\WPF.ParticleLife.Ellipses.csproj", "{DD0E689F-BA98-4A7C-A082-D29042C7AB7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.ParticleLife.Graphics", "WPF.ParticleLife.Graphics\WPF.ParticleLife.Graphics.csproj", "{4DA952CC-0685-4F29-B783-EE8EED0F9B52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.ParticleLife.Template", "WPF.ParticleLife.Template\WPF.ParticleLife.Template.csproj", "{2092D6F6-D65C-4937-BD7E-EFB348E9442C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.ParticleLife.Updated", "WPF.ParticleLife.Updated\WPF.ParticleLife.Updated.csproj", "{1D3B2EFE-E157-4883-99C1-1869F1A5934B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD0E689F-BA98-4A7C-A082-D29042C7AB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0E689F-BA98-4A7C-A082-D29042C7AB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0E689F-BA98-4A7C-A082-D29042C7AB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0E689F-BA98-4A7C-A082-D29042C7AB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA952CC-0685-4F29-B783-EE8EED0F9B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA952CC-0685-4F29-B783-EE8EED0F9B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA952CC-0685-4F29-B783-EE8EED0F9B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA952CC-0685-4F29-B783-EE8EED0F9B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2092D6F6-D65C-4937-BD7E-EFB348E9442C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2092D6F6-D65C-4937-BD7E-EFB348E9442C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2092D6F6-D65C-4937-BD7E-EFB348E9442C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2092D6F6-D65C-4937-BD7E-EFB348E9442C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D3B2EFE-E157-4883-99C1-1869F1A5934B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3B2EFE-E157-4883-99C1-1869F1A5934B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3B2EFE-E157-4883-99C1-1869F1A5934B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3B2EFE-E157-4883-99C1-1869F1A5934B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54DF0A8F-E0AB-47EB-A6C3-B0FA8FB4BD3E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,25 @@
+﻿<Application x:Class="WPF.ParticleLife.Template.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPF.ParticleLife.Template"
+             xmlns:ccc="clr-namespace:WPF.AA.CustomControls.Converters;assembly=WPF.AA.CustomControls"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ccc:SolidColorBrushConverter x:Key="SolidColorBrushConverter" />
+
+            <Style x:Key="NoMouseOverButton" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                                <ContentPresenter />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,242 @@
+﻿<Window x:Class="WPF.ParticleLife.Updated.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.ParticleLife.Updated"
+        xmlns:cc="clr-namespace:WPF.AA.CustomControls;assembly=WPF.AA.CustomControls"
+        xmlns:cc2="clr-namespace:WPF.AA.CustomControls.DataTemplateControls;assembly=WPF.AA.CustomControls"
+        xmlns:vm="clr-namespace:WPF.ParticleLife.Updated.ViewModel"
+        mc:Ignorable="d"
+        Title="Particle Life" Height="800" Width="1024" MinHeight="595" MinWidth="516"
+        WindowStartupLocation="CenterScreen" 
+        Background="{Binding UniverseViewModel.BackgroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FF1F1F1F}" 
+        Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}"
+        Loaded="Window_Loaded" Closing="Window_Closing"
+        d:DataContext="{d:DesignInstance {x:Type vm:MainWindowViewModel}}">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <cc:PopupExpander Grid.Column="0" ExpandDirection="Down" BorderThickness="0" PopupHorizontalOffset="172" VerticalAlignment="Top">
+                    <cc:PopupExpander.Header>
+                        <Border Background="White" BorderThickness="0">
+                            <Rectangle Width="24" Height="24">
+                                <Rectangle.Fill>
+                                    <DrawingBrush>
+                                        <DrawingBrush.Drawing>
+                                            <DrawingGroup>
+                                                <DrawingGroup.Children>
+                                                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0Z" />
+                                                    <GeometryDrawing Brush="#FF000000" Geometry="F1M10.2123,8C10.2123,9.222 9.2223,10.212 8.0003,10.212 6.7783,10.212 5.7873,9.222 5.7873,8 5.7873,6.778 6.7783,5.788 8.0003,5.788 9.2223,5.788 10.2123,6.778 10.2123,8 M9.9643,3.257C9.8183,3.197,9.6683,3.17,9.5213,3.124L9.1673,1 6.8333,1 6.4803,3.121C6.1853,3.213,5.8993,3.332,5.6253,3.475L3.8753,2.225 2.2253,3.875 3.4773,5.627C3.4053,5.764 3.3183,5.89 3.2573,6.036 3.1973,6.182 3.1703,6.331 3.1243,6.479L1.0003,6.833 1.0003,9.166 3.1213,9.52C3.2133,9.815,3.3313,10.101,3.4753,10.374L2.2253,12.125 3.8753,13.775 5.6273,12.523C5.7643,12.595 5.8893,12.682 6.0353,12.742 6.1813,12.803 6.3313,12.83 6.4793,12.876L6.8333,15 9.1663,15 9.5203,12.879C9.8153,12.787,10.1013,12.668,10.3743,12.525L12.1243,13.775 13.7743,12.125 12.5233,10.373C12.5953,10.236 12.6823,10.11 12.7423,9.964 12.8033,9.818 12.8303,9.669 12.8763,9.521L15.0003,9.167 15.0003,6.834 12.8783,6.48C12.7863,6.185,12.6683,5.899,12.5243,5.625L13.7743,3.875 12.1253,2.225 10.3733,3.477C10.2353,3.405,10.1103,3.318,9.9643,3.257" />
+                                                </DrawingGroup.Children>
+                                            </DrawingGroup>
+                                        </DrawingBrush.Drawing>
+                                    </DrawingBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Border>
+                    </cc:PopupExpander.Header>
+                    <Border Background="{Binding UniverseViewModel.BackgroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FF1F1F1F}" 
+                            BorderBrush="Gray" BorderThickness="1" Width="200">
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="Settings" FontSize="18"
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Content="Reset All Particles" Margin="0,5,0,0"
+                                    Command="{Binding ResetParticlesCommand}" />
+                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Wrap" Margin="0,5,0,0"
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <CheckBox Grid.Column="1" Grid.Row="2" Margin="5,5,0,0"
+                                      IsChecked="{Binding UniverseViewModel.Wrap}" />
+                            <TextBlock Grid.Column="0" Grid.Row="3" Text="Friction" Margin="0,5,0,0" 
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <cc:NumericUpDown Grid.Column="1" Grid.Row="3" Margin="5,5,0,0" ValueType="Double" ValueFormat="N2" MinValue="0.0" MaxValue="1.0" Step="0.01"
+                                              Value="{Binding UniverseViewModel.Friction}" />
+                            <TextBlock Grid.Column="0" Grid.Row="4" Text="Force range" Margin="0,5,0,0" 
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <cc:NumericUpDown Grid.Column="1" Grid.Row="4" Margin="5,5,0,0" ValueType="Double" ValueFormat="N2" MinValue="1.0" MaxValue="250.0" Step="1.0"
+                                              Value="{Binding UniverseViewModel.ForceRange}" />
+                            <TextBlock Grid.Column="0" Grid.Row="5" Text="Particle range" Margin="0,5,0,0" 
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <cc:NumericUpDown Grid.Column="1" Grid.Row="5" Margin="5,5,0,0" ValueType="Double" ValueFormat="N2" MinValue="1.0" MaxValue="500.0" Step="1.0"
+                                              Value="{Binding UniverseViewModel.ParticleRange}" />
+                            <TextBlock Grid.Column="0" Grid.Row="6" Text="Particle count" Margin="0,5,0,0" 
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <cc:NumericUpDown Grid.Column="1" Grid.Row="6" Margin="5,5,0,0" ValueType="Integer" MinValue="1" MaxValue="250"
+                                              Value="{Binding UniverseViewModel.ParticleCount}" />
+                            <TextBlock Grid.Column="0" Grid.Row="7" Text="Radius" Margin="0,5,0,0" Padding="0,1,0,0" 
+                                       Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=Foreground, FallbackValue=#FFFFFFFF}" />
+                            <cc2:NumericUpDownDouble Grid.Column="1" Grid.Row="7" Margin="5,5,0,0" ValueFormat="N2" MinValue="1.0" MaxValue="10.0" Step="0.1" 
+                                                     Value="{Binding UniverseViewModel.Radius}" />
+                            <TextBlock Grid.Column="0" Grid.Row="8" Text="Max velocity" Margin="0,5,0,0" Padding="0,1,0,0" 
+                                       Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=Foreground, FallbackValue=#FFFFFFFF}" />
+                            <cc2:NumericUpDownDouble Grid.Column="1" Grid.Row="8" Margin="5,5,0,0" ValueFormat="N2" MinValue="0.1" MaxValue="1000.0" Step="0.1" 
+                                                     Value="{Binding UniverseViewModel.MaxVelocity}" />
+                            <TextBlock Grid.Column="0" Grid.Row="9" Text="Time factor" Margin="0,5,0,0" Padding="0,1,0,0" 
+                                       Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=Foreground, FallbackValue=#FFFFFFFF}" />
+                            <cc2:NumericUpDownDouble Grid.Column="1" Grid.Row="9" Margin="5,5,0,0" ValueFormat="N2" MinValue="0.1" MaxValue="10.0" Step="0.1" 
+                                                     Value="{Binding UniverseViewModel.TimeFactor}" />
+                            <TextBlock Grid.Column="0" Grid.Row="10" Text="Background" Margin="0,5,0,0" 
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <Border Grid.Column="1" Grid.Row="10" BorderBrush="White" BorderThickness="1" Width="16" Margin="5,5,0,0" HorizontalAlignment="Left">
+                                <Border BorderBrush="Black" BorderThickness="1">
+                                    <Button Style="{StaticResource NoMouseOverButton}" BorderThickness="0" Cursor="Hand"
+                                            Background="{Binding UniverseViewModel.BackgroundColor, Converter={StaticResource SolidColorBrushConverter}}"
+                                            Command="{Binding UniverseViewModel.BackgroundCommand}" />
+                                </Border>
+                            </Border>
+                            <TextBlock Grid.Column="0" Grid.Row="11" Text="Foreground" Margin="0,5,0,0"
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <Border Grid.Column="1" Grid.Row="11" BorderBrush="White" BorderThickness="1" Width="16" Margin="5,5,0,0" HorizontalAlignment="Left">
+                                <Border BorderBrush="Black" BorderThickness="1">
+                                    <Button Style="{StaticResource NoMouseOverButton}" BorderThickness="0" Cursor="Hand"
+                                            Background="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}}"
+                                            Command="{Binding UniverseViewModel.ForegroundCommand}" />
+                                </Border>
+                            </Border>
+                            <TextBlock Grid.Column="0" Grid.Row="12" Text="Border" Margin="0,5,0,0"
+                                       Foreground="{Binding UniverseViewModel.ForegroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FFFFFFFF}" />
+                            <Border Grid.Column="1" Grid.Row="12" BorderBrush="White" BorderThickness="1" Width="16" Margin="5,5,0,0" HorizontalAlignment="Left">
+                                <Border BorderBrush="Black" BorderThickness="1">
+                                    <Button Style="{StaticResource NoMouseOverButton}" BorderThickness="0" Cursor="Hand"
+                                            Background="{Binding UniverseViewModel.BorderColor, Converter={StaticResource SolidColorBrushConverter}}"
+                                            Command="{Binding UniverseViewModel.BorderCommand}" />
+                                </Border>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </cc:PopupExpander>
+                <ItemsControl Grid.Column="1" Margin="5,0" ItemsSource="{Binding UniverseViewModel.Atoms}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True" Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <cc:PopupExpander ExpandDirection="Down" Background="Transparent" BorderBrush="Transparent">
+                                <cc:PopupExpander.Header>
+                                    <Grid Height="22" Width="22" ToolTip="{Binding Name}" Background="#01000000">
+                                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                SnapsToDevicePixels="True" UseLayoutRounding="True">
+                                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                    SnapsToDevicePixels="True" UseLayoutRounding="True">
+                                                <Border Background="{Binding MediaColor, Converter={StaticResource SolidColorBrushConverter}}" 
+                                                        Width="10" Height="10" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                        SnapsToDevicePixels="True" UseLayoutRounding="True" />
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+                                </cc:PopupExpander.Header>
+                                <Border BorderBrush="Gray" BorderThickness="1" MinWidth="200"
+                                        Background="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=Background, FallbackValue=#FF1F1F1F}">
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Name}" FontWeight="Bold"
+                                                   Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=Foreground, FallbackValue=#FFFFFFFF}" />
+                                        <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Background="Gray" Height="1" Margin="0,5" />
+                                        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="Attractions" Margin="0,5,0,0" 
+                                                   Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=Foreground, FallbackValue=#FFFFFFFF}" />
+                                        <ListView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Margin="0,2,0,0" MaxHeight="200"
+                                                  ItemsSource="{Binding Forces}">
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn Header="Atom" Width="120" DisplayMemberBinding="{Binding Target.Name}" />
+                                                    <GridViewColumn Header="Attraction">
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <cc2:NumericUpDownDouble Width="50" ValueFormat="N2" MinValue="-1.0" MaxValue="1.0" Step="0.01" Value="{Binding Attraction}" />
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                        <Button Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" Content="Remove" Margin="0,5,0,0" Background="DarkRed" Foreground="White"
+                                                Command="{Binding RemoveCommand}" />
+                                    </Grid>
+                                </Border>
+                            </cc:PopupExpander>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button Grid.Column="2" Background="White" BorderThickness="0" VerticalAlignment="Top" Command="{Binding AddAtomCommand}">
+                    <Rectangle Width="24" Height="24">
+                        <Rectangle.Fill>
+                            <DrawingBrush>
+                                <DrawingBrush.Drawing>
+                                    <DrawingGroup>
+                                        <DrawingGroup.Children>
+                                            <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                                            <GeometryDrawing Brush="#FF000000" Geometry="F1M6.0003,-0.000199999999999534L6.0003,5.9998 0.000300000000000189,5.9998 0.000300000000000189,9.9998 6.0003,9.9998 6.0003,15.9998 10.0003,15.9998 10.0003,9.9998 16.0003,9.9998 16.0003,5.9998 10.0003,5.9998 10.0003,-0.000199999999999534z" />
+                                            <GeometryDrawing Brush="#FF000000" Geometry="F1M15,9L9,9 9,15 7,15 7,9 1,9 1,7 7,7 7,1 9,1 9,7 15,7z" />
+                                        </DrawingGroup.Children>
+                                    </DrawingGroup>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Border x:Name="imageBorder" BorderBrush="Gray" BorderThickness="0,1" SizeChanged="Border_SizeChanged">
+                    <Image x:Name="universeImage" Source="{Binding Bitmap}" RenderOptions.BitmapScalingMode="LowQuality" />
+                </Border>
+            </Grid>
+            <Grid Grid.Row="2" 
+                  Background="{Binding UniverseViewModel.BackgroundColor, Converter={StaticResource SolidColorBrushConverter}, FallbackValue=#FF1F1F1F}">
+                <Grid Margin="0,2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" MinWidth="100" />
+                        <ColumnDefinition Width="Auto" MinWidth="100" />
+                        <ColumnDefinition Width="Auto" MinWidth="200" />
+                        <ColumnDefinition Width="Auto" MinWidth="75" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Text="{Binding UniverseViewModel.Width, StringFormat=Width: {0:N0}}" />
+                    <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="{Binding UniverseViewModel.Height, StringFormat=Height: {0:N0}}" />
+                    <TextBlock Grid.Column="3" Text="{Binding TotalParticles, StringFormat=Total particles: {0:N0}, FallbackValue=Total particles: 123456789}" />
+                    <TextBlock Grid.Column="4" Text="{Binding FramesPerSecond, StringFormat=FPS: {0}, FallbackValue=FPS: 0}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
