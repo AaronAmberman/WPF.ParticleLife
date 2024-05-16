@@ -6,7 +6,7 @@ I should say that I don't understand animation all that well. I also don't under
 I say series of projects because I took the Winforms/C# version, https://github.com/BlinkSun/ParticleLifeSimulation, and made several iterations just trying to learn while experimenting with code.
 
 ### WPF.ParticleLife.Ellipses
-This project uses WPF Ellipse objects and a Canvas and utilizes the Canvas.SetLeft and Canvas.SetTop methods. While this worked it was not very performant. 
+This project uses WPF Ellipse objects and a Canvas and utilizes the Canvas.SetLeft and Canvas.SetTop methods. While this worked it was not very performant. This project is missing some functionality like reset all particles.
 
 ### WPF.ParticleLife.Paths
 This project uses WPF Path objects and a Canvas. This project was equal or less performant than the Ellipse counterpart so it was **excluded** from the repo.
@@ -15,7 +15,7 @@ This project uses WPF Path objects and a Canvas. This project was equal or less 
 This project used StreamGeometry with Paths and a Canvas. This project was less performant than the Ellipse or Path counterparts so it was **excluded** from the repo. This really surprised me as the internet said this was the thing to do for performance rendering in WPF. Turned out to not be true in my experience but maybe I was not doing it right.
 
 ### WPF.ParticleLife.Graphics
-This project uses a System.Drawing.Graphics and a System.Drawing.Bitmap to do GDI+ drawing. This turned out to be the most performant in terms of rendering so this was the selected rendering mechanism moving forward.
+This project uses a System.Drawing.Graphics and a System.Drawing.Bitmap to do GDI+ drawing. This turned out to be the most performant in terms of rendering so this was the selected rendering mechanism moving forward. This project is missing some functionality like reset all particles.
 
 ### WPF.ParticleLife.Template
 This project uses the Graphics Bitmap combo, however the code has been more organized and is well laid out in my opinion. The **ONLY** thing not coded is the particle update code. Look for empty todo!
