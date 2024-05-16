@@ -118,6 +118,9 @@ namespace WPF.ParticleLife.Updated.Rendering
             #region Synchronous
 
             // how can we make the synchronous version more efficient?
+            // how can we make the particles at the edges not flash back and forth between the top/bottom or left/right borders if wrapping is turned on?
+            // how come if we turn off wrapping doesn't the velocity *= -1 seem to move the particles in the other direction?
+            //      we don't want them sitting on the edges, we want to move them away from the edges
 
             foreach (Particle sourceParticle in Particles)
             {
