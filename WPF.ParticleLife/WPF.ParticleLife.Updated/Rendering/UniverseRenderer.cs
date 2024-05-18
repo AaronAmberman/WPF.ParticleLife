@@ -54,11 +54,11 @@ namespace WPF.ParticleLife.Updated.Rendering
 
         public void DrawParticle(float x, float y, float diameter, SolidBrush color, Pen border) 
         {
-            //if (x < 0) x = 0;
-            //if (x + diameter > Universe.Width) x = (float)Universe.Width - diameter;
+            if (x < 0) x = 0;
+            if (x + diameter > Universe.Width) x = (float)Universe.Width - diameter;
 
-            //if (y < 0) y = 0;
-            //if (y + diameter > Universe.Height) y = (float)Universe.Height - diameter;
+            if (y < 0) y = 0;
+            if (y + diameter > Universe.Height) y = (float)Universe.Height - diameter;
 
             graphics.FillEllipse(color, x, y, diameter, diameter);
             graphics.DrawEllipse(border, x, y, diameter, diameter);
@@ -240,6 +240,21 @@ namespace WPF.ParticleLife.Updated.Rendering
 
                     if (Math.Abs(deltaX) > Universe.ParticleRange || Math.Abs(deltaY) > Universe.ParticleRange)
                         continue;
+
+                    // what is this actually doing? shifting the delta by the entire height or width if it is greater than half of the width or height?
+                    // what does that do?
+                    //if (Universe.Wrap)
+                    //{
+                    //    if (deltaX > Universe.Width * 0.5)
+                    //        deltaX -= Universe.Width;
+                    //    else if (deltaX < -Universe.Width * 0.5)
+                    //        deltaX += Universe.Width;
+
+                    //    if (deltaY > Universe.Height * 0.5)
+                    //        deltaY -= Universe.Height;
+                    //    else if (deltaY < -Universe.Height * 0.5)
+                    //        deltaY += Universe.Height;
+                    //}
 
                     double distanceSqaured = deltaX * deltaX + deltaY * deltaY;
                     double distance = Math.Sqrt(distanceSqaured);

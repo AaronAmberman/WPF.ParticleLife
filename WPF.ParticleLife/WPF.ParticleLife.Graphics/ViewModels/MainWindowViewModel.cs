@@ -263,120 +263,9 @@ namespace WPF.ParticleLife.Graphics.ViewModels
         {
             #region Parallel
 
-            Parallel.ForEach(UniverseViewModel.Atoms, (AtomViewModel atomSource) =>
-            {
-                Parallel.ForEach(UniverseViewModel.Atoms, (AtomViewModel atomTarget) =>
-                {
-                    ForceViewModel attForce = atomSource.Forces.FirstOrDefault(x => x.Target == atomTarget);
-
-                    if (attForce == null) return;
-
-                    foreach (ParticleViewModel sourceParticle in atomSource.Particles)
-                    {
-                        double forceX = 0;
-                        double forceY = 0;
-
-                        foreach (ParticleViewModel targetParticle in atomTarget.Particles)
-                        {
-                            double deltaX = sourceParticle.X - targetParticle.X;
-                            double deltaY = sourceParticle.Y - targetParticle.Y;
-
-                            if (SettingsViewModel.Wrap)
-                            {
-                                if (deltaX > UniverseViewModel.Size.Width * 0.5)
-                                {
-                                    deltaX -= UniverseViewModel.Size.Width;
-                                }
-                                else if (deltaX < -UniverseViewModel.Size.Width * 0.5)
-                                {
-                                    deltaX += UniverseViewModel.Size.Width;
-                                }
-
-                                if (deltaY > UniverseViewModel.Size.Height * 0.5)
-                                {
-                                    deltaY -= UniverseViewModel.Size.Height;
-                                }
-                                else if (deltaY < -UniverseViewModel.Size.Height * 0.5)
-                                {
-                                    deltaY += UniverseViewModel.Size.Height;
-                                }
-                            }
-
-                            double distance = deltaX * deltaX + deltaY * deltaY;
-                            double forceRange = Math.Sqrt(distance);
-
-                            if (forceRange > 0 && forceRange < SettingsViewModel.ForceRangeMax)
-                            {
-                                double force = attForce.Attraction * 1 / forceRange;
-
-                                forceX += force * deltaX;
-                                forceY += force * deltaY;
-                            }
-
-                            //sourceParticle.VelocityX = (sourceParticle.VelocityX + forceX) * (1.0 - SettingsViewModel.Friction);
-                            //sourceParticle.VelocityY = (sourceParticle.VelocityY + forceY) * (1.0 - SettingsViewModel.Friction);
-                            sourceParticle.VelocityX = (sourceParticle.VelocityX + forceX) * (1.0 - SettingsViewModel.Friction) * delta; // this is not done in the original
-                            sourceParticle.VelocityY = (sourceParticle.VelocityY + forceY) * (1.0 - SettingsViewModel.Friction) * delta; // this is not done in the original
-
-                            sourceParticle.X += sourceParticle.VelocityX;
-                            sourceParticle.Y += sourceParticle.VelocityY;
-
-                            if (SettingsViewModel.Wrap)
-                            {
-                                if (sourceParticle.X < 0)
-                                {
-                                    sourceParticle.X += UniverseViewModel.Size.Width;
-                                }
-                                else if (sourceParticle.X >= UniverseViewModel.Size.Width)
-                                {
-                                    sourceParticle.X -= UniverseViewModel.Size.Width;
-                                }
-
-                                if (sourceParticle.Y < 0)
-                                {
-                                    sourceParticle.Y += UniverseViewModel.Size.Height;
-                                }
-                                else if (sourceParticle.Y >= UniverseViewModel.Size.Height)
-                                {
-                                    sourceParticle.Y -= UniverseViewModel.Size.Height;
-                                }
-                            }
-                            else
-                            {
-                                if (sourceParticle.X < 0.0)
-                                {
-                                    sourceParticle.VelocityX *= -1;
-                                    sourceParticle.X = 0;
-                                }
-                                else if (sourceParticle.X + atomSource.Diameter > UniverseViewModel.Size.Width)
-                                {
-                                    sourceParticle.VelocityX *= -1;
-                                    sourceParticle.X = UniverseViewModel.Size.Width - atomSource.Diameter;
-                                }
-
-                                if (sourceParticle.Y < 0.0)
-                                {
-                                    sourceParticle.VelocityY *= -1;
-                                    sourceParticle.Y = 0;
-                                }
-                                else if (sourceParticle.Y + atomSource.Diameter > UniverseViewModel.Size.Height)
-                                {
-                                    sourceParticle.VelocityY *= -1;
-                                    sourceParticle.Y = UniverseViewModel.Size.Height - atomSource.Diameter;
-                                }
-                            }
-                        }
-                    }
-                });
-            });
-
-            #endregion
-
-            #region Synchronous
-
-            //foreach (AtomViewModel atomSource in UniverseViewModel.Atoms)
+            //Parallel.ForEach(UniverseViewModel.Atoms, (AtomViewModel atomSource) =>
             //{
-            //    foreach (AtomViewModel atomTarget in UniverseViewModel.Atoms)
+            //    Parallel.ForEach(UniverseViewModel.Atoms, (AtomViewModel atomTarget) =>
             //    {
             //        ForceViewModel attForce = atomSource.Forces.FirstOrDefault(x => x.Target == atomTarget);
 
@@ -478,8 +367,119 @@ namespace WPF.ParticleLife.Graphics.ViewModels
             //                }
             //            }
             //        }
-            //    }
-            //}
+            //    });
+            //});
+
+            #endregion
+
+            #region Synchronous
+
+            foreach (AtomViewModel atomSource in UniverseViewModel.Atoms)
+            {
+                foreach (AtomViewModel atomTarget in UniverseViewModel.Atoms)
+                {
+                    ForceViewModel attForce = atomSource.Forces.FirstOrDefault(x => x.Target == atomTarget);
+
+                    if (attForce == null) return;
+
+                    foreach (ParticleViewModel sourceParticle in atomSource.Particles)
+                    {
+                        double forceX = 0;
+                        double forceY = 0;
+
+                        foreach (ParticleViewModel targetParticle in atomTarget.Particles)
+                        {
+                            double deltaX = sourceParticle.X - targetParticle.X;
+                            double deltaY = sourceParticle.Y - targetParticle.Y;
+
+                            if (SettingsViewModel.Wrap)
+                            {
+                                if (deltaX > UniverseViewModel.Size.Width * 0.5)
+                                {
+                                    deltaX -= UniverseViewModel.Size.Width;
+                                }
+                                else if (deltaX < -UniverseViewModel.Size.Width * 0.5)
+                                {
+                                    deltaX += UniverseViewModel.Size.Width;
+                                }
+
+                                if (deltaY > UniverseViewModel.Size.Height * 0.5)
+                                {
+                                    deltaY -= UniverseViewModel.Size.Height;
+                                }
+                                else if (deltaY < -UniverseViewModel.Size.Height * 0.5)
+                                {
+                                    deltaY += UniverseViewModel.Size.Height;
+                                }
+                            }
+
+                            double distance = deltaX * deltaX + deltaY * deltaY;
+                            double forceRange = Math.Sqrt(distance);
+
+                            if (forceRange > 0 && forceRange < SettingsViewModel.ForceRangeMax)
+                            {
+                                double force = attForce.Attraction * 1 / forceRange;
+
+                                forceX += force * deltaX;
+                                forceY += force * deltaY;
+                            }
+
+                            //sourceParticle.VelocityX = (sourceParticle.VelocityX + forceX) * (1.0 - SettingsViewModel.Friction);
+                            //sourceParticle.VelocityY = (sourceParticle.VelocityY + forceY) * (1.0 - SettingsViewModel.Friction);
+                            sourceParticle.VelocityX = (sourceParticle.VelocityX + forceX) * (1.0 - SettingsViewModel.Friction) * delta; // this is not done in the original
+                            sourceParticle.VelocityY = (sourceParticle.VelocityY + forceY) * (1.0 - SettingsViewModel.Friction) * delta; // this is not done in the original
+
+                            sourceParticle.X += sourceParticle.VelocityX;
+                            sourceParticle.Y += sourceParticle.VelocityY;
+
+                            if (SettingsViewModel.Wrap)
+                            {
+                                if (sourceParticle.X < 0)
+                                {
+                                    sourceParticle.X += UniverseViewModel.Size.Width;
+                                }
+                                else if (sourceParticle.X >= UniverseViewModel.Size.Width)
+                                {
+                                    sourceParticle.X -= UniverseViewModel.Size.Width;
+                                }
+
+                                if (sourceParticle.Y < 0)
+                                {
+                                    sourceParticle.Y += UniverseViewModel.Size.Height;
+                                }
+                                else if (sourceParticle.Y >= UniverseViewModel.Size.Height)
+                                {
+                                    sourceParticle.Y -= UniverseViewModel.Size.Height;
+                                }
+                            }
+                            else
+                            {
+                                if (sourceParticle.X < 0.0)
+                                {
+                                    sourceParticle.VelocityX *= -1;
+                                    sourceParticle.X = 0;
+                                }
+                                else if (sourceParticle.X + atomSource.Diameter > UniverseViewModel.Size.Width)
+                                {
+                                    sourceParticle.VelocityX *= -1;
+                                    sourceParticle.X = UniverseViewModel.Size.Width - atomSource.Diameter;
+                                }
+
+                                if (sourceParticle.Y < 0.0)
+                                {
+                                    sourceParticle.VelocityY *= -1;
+                                    sourceParticle.Y = 0;
+                                }
+                                else if (sourceParticle.Y + atomSource.Diameter > UniverseViewModel.Size.Height)
+                                {
+                                    sourceParticle.VelocityY *= -1;
+                                    sourceParticle.Y = UniverseViewModel.Size.Height - atomSource.Diameter;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             #endregion
         }
